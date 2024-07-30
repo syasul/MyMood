@@ -1,0 +1,39 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>My Mood</title>
+  <style>
+    .jumbotron {
+      background-image: url("{% static 'images/back.jpeg' %}");
+      background-size: cover;
+      background-position: center;
+      height: 95vh;
+    }
+    .custom-textarea:focus {
+      outline: none;
+      border-color: gray;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="p-5">
+    <div class="jumbotron flex flex-col justify-center items-center text-center text-white rounded-lg">
+      <h1 class="text-4xl md:text-6xl font-bold mb-5">Halo Zya How Are You Today</h1>
+      <form method="POST" class="w-1/2 md:w-3/4 sm:3/4">
+        {% csrf_token %}
+        <textarea name="message" class="custom-textarea w-full md:w-3/4 lg:w-full p-2 text-gray-800 rounded mb-4 border-gray-600" rows="4" placeholder="Type your mood here..."></textarea>
+        <br>
+        <button class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-10 rounded" type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>
